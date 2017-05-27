@@ -8,9 +8,9 @@
 <script>
     (function () {
         'use strict';
-        let demo = require('remote').require('./demo');
+        let demo = require('./demo');
 
-        let drawScale = 2, alpha = 1, fillAlpha = 1, xformScale = 1, drawFlags = 0;
+        let drawScale = 2, alpha = 1, fillAlpha = 1, xformScale = 1, drawFlags = 1;
         let width = 640;
         let height = 480;
         let canvas = document.createElement('canvas');
@@ -24,7 +24,6 @@
         function _color(color, alpha) {
             return 'rgba(' + ((color & 0xFF0000) >> 16) + ',' + ((color & 0xFF00) >> 8) + ',' + (color & 0xFF) + ',' + alpha + ')';
         }
-
 
         function DrawCircle (center, radius, color, solid, axis) {
             if (!radius) return;
@@ -111,13 +110,15 @@
                 ctx.stroke();
             }
         };
-        let lastTimestamp = 0;
+
         demo.init(debugDraw);
+
+        let lastTimestamp = 0;
         (function loop() {
             let fps = 60;
             let now = Date.now();
             let diff = now - lastTimestamp;
-            if (diff > (1000.0/fps)) {
+            if (diff > (1000.0 / fps)) {
                 ctx.clearRect(0, 0, 854, 400);
                 lastTimestamp = now;
                 demo.step();

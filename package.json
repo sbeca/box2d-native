@@ -1,6 +1,6 @@
 {
   "name": "box2d-native",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Box2D as native addon",
   "repository": {
     "type": "git",
@@ -8,14 +8,14 @@
   },
   "main": "Box2D.js",
   "engines": {
-    "node": ">=4.2.1"
+    "node": "^6.10.3"
   },
   "config": {
     "box2d_url": "https://codeload.github.com/erincatto/Box2D/tar.gz/v2.3.1",
-    "swig_url": "http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz",
+    "swig_url": "http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz",
     "box2d_arch_name": "Box2D-2.3.1.tar.gz",
-    "swig_arch_name": "swig-3.0.7.tar.gz",
-    "swig_dir": "swig-3.0.7",
+    "swig_arch_name": "swig-3.0.12.tar.gz",
+    "swig_dir": "swig-3.0.12",
     "box2d_dir": "Box2D-2.3.1/Box2D",
     "box2d_cmake_lists_path": "Box2D-2.3.1/Box2D/Box2D/CMakeLists.txt"
   },
@@ -35,8 +35,8 @@
     "clean:swig": "rm -rf $npm_package_config_swig_dir && rm -rf $npm_package_config_swig_arch_name",
     "clean": "npm run clean:Box2D && npm run clean:swig && rm -rf Box2D_wrap.cxx",
     "preinstall": "npm run clean && npm run get && npm run untar && npm run patch && npm run make && npm run wrap",
-    "install": "node-gyp configure && node-gyp build",
-    "prepublish": "node node_modules/.bin/babel Box2D.es6 --out-file Box2D.js --source-maps --whitelist strict,es6.modules,es6.parameters,es6.spread,es6.destructuring",
+    "install": "node-gyp --target=v6.10.0 configure && node-gyp --target=v6.10.0 build",
+    "prepublish": "node node_modules/.bin/babel Box2D.es6 --out-file Box2D.js --presets es2015 --source-maps --whitelist strict,es6.modules,es6.parameters,es6.spread,es6.destructuring",
     "postinstall": "npm run clean",
     "test": "node node_modules/.bin/mocha -r tests/bootstrap.js tests/**/*.spec.js"
   },
@@ -45,12 +45,14 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "babel": "^5.8.29",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "bindings": "^1.2.1",
-    "lodash": "^3.10.1"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "mocha": "^2.3.3",
-    "should": "^7.1.1"
+    "babel-register": "^6.24.1",
+    "mocha": "^3.4.1",
+    "should": "^11.2.1"
   }
 }

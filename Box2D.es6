@@ -17,3 +17,4 @@ export default reduce(
     ) : box2d,
   box2d
 );
+module.exports = exports.default;
