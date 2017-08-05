@@ -3,7 +3,7 @@ env:
   - CXX=g++-4.9
 language: node_js
 node_js:
-  - "6.10"
+  - "6.11"
 addons:
   apt:
     sources:

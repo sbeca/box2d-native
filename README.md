@@ -18,7 +18,7 @@ npm install node-gyp -g
 npm install box2d-native
 ```
 
-**IMPORTANT:** Installation tested only with Node.js 6.10.3 and gc++ 4.9.
+**IMPORTANT:** Installation tested only with Node.js 6.11.2 and gc++ 4.9.
 
 ## Usage
 
@@ -35,7 +35,7 @@ Original "namespaced" Box2D classes (`b2Vec2`, `b2World`...) are also exposed.
 
 ## Demo
 
-**IMPORTANT:** Runs only with Node.js v6.10.3
+**IMPORTANT:** Runs only with Node.js v6.11.2
 
 ```
 npm install node-gyp -g
